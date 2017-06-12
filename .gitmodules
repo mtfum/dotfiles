@@ -1,0 +1,6 @@
+[submodule "powerline-shell"]
+	path = powerline-shell
+	url = https://github.com/milkbikis/powerline-shell
+[submodule "Pokemon-Terminal"]
+	path = Pokemon-Terminal
+	url = https://github.com/LazoCoder/Pokemon-Terminal
