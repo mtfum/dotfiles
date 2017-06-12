@@ -1,3 +1,4 @@
+# submoduleの削除方法 http://d.hatena.ne.jp/oppara/20101116/p1
 [submodule "powerline-shell"]
 	path = powerline-shell
 	url = https://github.com/milkbikis/powerline-shell

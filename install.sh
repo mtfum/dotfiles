@@ -1,5 +1,5 @@
 
-# http://qiita.com/b4b4r07/items/24872cdcbec964ce2178
+# 参考メモ: http://qiita.com/b4b4r07/items/24872cdcbec964ce2178
 
 DOTPATH=~/.dotfiles
 
@@ -27,7 +27,7 @@ else
     die "curl or wget required"
 fi
 
-cd ~/.dotfiles
+cd $DOTPATH
 if [ $? -ne 0 ]; then
     die "not found: $DOTPATH"
 fi
@@ -39,3 +39,23 @@ do
 
     ln -snfv "$DOTPATH/$f" "$HOME/$f"
 done
+
+IGNOREFILES=('..', '.DS_Store', '.gitignore', 'README.md')
+
+for dotfile in .?* 
+do
+	if `echo ${IGNOREFILES[@]} | grep -q "$dotfile"` ; then
+    	echo "😌 Ignored ${dotfile}"
+    	continue
+  	fi
+
+if [[ -f $dotfile ]]; then
+    ln -sf $PWD/$dotfile $TARGET
+    suffix="@"
+  elif [[ -d $dotfile ]]; then
+    ln -sf $PWD/$dotfile $TARGET/
+    suffix="/"
+  fi
+echo "😎 Created $1/$dotfile$suffix"
+done
+

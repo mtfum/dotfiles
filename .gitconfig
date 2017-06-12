@@ -1,0 +1,68 @@
+[user]
+	name = Fumiya Yamanaka
+	email = f.yamanaka1127@gmail.com
+[merge]
+	tool = vimdiff
+[push]
+	default = current
+[pull]
+	rebase = true
+[init]
+	templatedir = /Users/FumiyaYamanaka/.git_template/
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[grep]
+	linenumber = true
+[ghq]
+	root = 	~/src
+[rebase]
+	autostash = true
+[alias]
+# status
+	s = status
+	ss = status -s
+	sh = show
+# add
+	a = add .
+	ap = add -p
+	ai = add -i
+# commit
+	c = commit
+	cm = commit -m
+	cam = commit --amend
+# add + commit
+	acm = commit -a -m
+# checkout
+	ch = checkout
+	chb = checkout -b
+	chd = checkout develop
+	chm = checkout master
+# branch 
+	b = branch
+	ba = branch -a
+	bd = branch -d
+	bD = branch -D
+# rebase
+	red = rebase develop
+	recon = rebase --continue
+	reabort = rebase --abort
+# diff
+	d = diff
+# reset
+	cancel = reset --soft HEAD^	
+# log
+	logg = log --graph --all --decorate --no-merges
+# stash
+	st = stash
+	stl = stash list
+	stp = stash pop
+	std = stash drop
+# cherry-pick
+	chp = cherry-pick
+# mergetool
+	mg = mergetool
+	pr = pull-request
+	see = browse
+

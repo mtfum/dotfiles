@@ -165,4 +165,20 @@ fi
 # z
 . /path/to/z.sh
 
+# xcode
+function xcode() {
+  xcworkspace=$(ls | grep --color=never .xcworkspace | head -1)
+  xcodeproj=$(ls | grep --color=never .xcodeproj | head -1)
+  xcode=${$(xcode-select -p)%/*/*}
+  if [[ -n ${xcworkspace} ]]; then
+    echo "Open ${xcworkspace}"
+    open -a ${xcode} ${xcworkspace}
+  elif [[ -n ${xcodeproj} ]]; then
+    echo "Open ${xcodeproj}"
+    open -a ${xcode} ${xcodeproj}
+  else
+    echo "Not found Xcode files"
+  fi
+}
+
 PATH=/Users/FumiyaYamanaka/.Pokemon-Terminal:/Users/FumiyaYamanaka/.Pokemon-Terminal:/Users/FumiyaYamanaka/.fastlane/bin:/Users/FumiyaYamanaka/.rbenv/shims:/usr/local/bin:/Users/FumiyaYamanaka/.fastlane/bin:/Users/FumiyaYamanaka/.Pokemon-Terminal:/Users/FumiyaYamanaka/.fastlane/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/FumiyaYamanaka/bin:/Users/FumiyaYamanaka/bin:/Users/FumiyaYamanaka/bin
