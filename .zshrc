@@ -1,8 +1,37 @@
 export XDG_CONFIG_HOME="$HOME/.config"
 export TERM=xterm-256color
 
-# use key map like emacs
-bindkey -e
+# Pokemon-Terminal
+echo PATH="$HOME/.Pokemon-Terminal:${PATH}" >> ~/.zshrc.local
+
+# .zshrc.local を読み込む
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
+# http://qiita.com/maxmellon/items/23325c22581e9187639e
+function peco-z-search
+{
+	which peco z > /dev/null
+	if [ $? -ne 0 ]; then
+		echo "Please install peco and z"
+		return 1
+	fi
+	local res=$(z | sort -rn | cut -c 12- | peco)
+	if [ -n "$res" ]; then
+		BUFFER+="cd $res"
+		zle accept-line
+	else
+	 return 1
+	fi
+}
+zle -N peco-z-search
+bindkey '^f' peco-z-search
+																								
+
+# swiftenv
+if which swiftenv > /dev/null
+then
+    eval "$(swiftenv init -)"
+fi
 
 # no beep sounds
 setopt nolistbeep
@@ -126,18 +155,6 @@ setopt print_eight_bit
 setopt extended_glob
 setopt globdots
 
-brew=`which brew 2>&1`
-if [[ $? == 0 ]]; then
-  . `brew --prefix`/etc/profile.d/z.sh
-fi
-function precmd ()
-{
-  brew=`which brew 2>&1`
-  if [[ $? == 0 ]]; then
-    _z --add "$(pwd -P)"
-  fi
-}
-
 # powerline-shell
 function _update_ps1() {
     export PS1="$(~/powerline-shell.py $? 2> /dev/null)"
@@ -162,9 +179,6 @@ if [ "$TERM" != "linux" ]; then
     install_powerline_precmd
 fi
 
-# z
-. /path/to/z.sh
-
 # xcode
 function xcode() {
   xcworkspace=$(ls | grep --color=never .xcworkspace | head -1)
@@ -181,4 +195,6 @@ function xcode() {
   fi
 }
 
-PATH=/Users/FumiyaYamanaka/.Pokemon-Terminal:/Users/FumiyaYamanaka/.Pokemon-Terminal:/Users/FumiyaYamanaka/.fastlane/bin:/Users/FumiyaYamanaka/.rbenv/shims:/usr/local/bin:/Users/FumiyaYamanaka/.fastlane/bin:/Users/FumiyaYamanaka/.Pokemon-Terminal:/Users/FumiyaYamanaka/.fastlane/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/FumiyaYamanaka/bin:/Users/FumiyaYamanaka/bin:/Users/FumiyaYamanaka/bin
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source ~/.zsh.d/z.sh

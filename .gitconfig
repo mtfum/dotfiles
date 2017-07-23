@@ -65,4 +65,7 @@
 	mg = mergetool
 	pr = pull-request
 	see = browse
-
+# hub pull-request
+	pr = pull-request -o
+[fetch]
+	prune = true
