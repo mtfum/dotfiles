@@ -1,8 +1,6 @@
 export XDG_CONFIG_HOME="$HOME/.config"
 export TERM=xterm-256color
-
-# Pokemon-Terminal
-echo PATH="$HOME/.Pokemon-Terminal:${PATH}" >> ~/.zshrc.local
+export PATH=$PATH:/usr/local/etc/bin
 
 # .zshrc.local を読み込む
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
@@ -163,8 +161,9 @@ function _update_ps1() {
 export PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 
 function powerline_precmd() {
-    PS1="$(~/powerline-shell.py --cwd-max-depth 1 $? --shell zsh 2> /dev/null)"
+	PS1="$(powerline-shell --shell zsh $?)"
 }
+
 
 function install_powerline_precmd() {
   for s in "${precmd_functions[@]}"; do
