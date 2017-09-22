@@ -45,4 +45,3 @@ Plug 'bluz71/vim-moonfly-colors'
 
 " Initialize plugin system
 call plug#end()
-

@@ -1,44 +1,28 @@
+# vim:set fdm=marker:
+
+# zplug
+# source ~/.zplug/init.zsh
+# zplug "sorin-ionescu/prezto"
+# zplug load --verbose
+#
+
 export XDG_CONFIG_HOME="$HOME/.config"
-export TERM=xterm-256color
-export PATH=$PATH:/usr/local/etc/bin
 
-# .zshrc.local を読み込む
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+# use key map like emacs
+bindkey -e
 
-# http://qiita.com/maxmellon/items/23325c22581e9187639e
-function peco-z-search
-{
-	which peco z > /dev/null
-	if [ $? -ne 0 ]; then
-		echo "Please install peco and z"
-		return 1
-	fi
-	local res=$(z | sort -rn | cut -c 12- | peco)
-	if [ -n "$res" ]; then
-		BUFFER+="cd $res"
-		zle accept-line
-	else
-	 return 1
-	fi
-}
-zle -N peco-z-search
-bindkey '^f' peco-z-search
-																								
-
-# swiftenv
-if which swiftenv > /dev/null
-then
-    eval "$(swiftenv init -)"
-fi
-
-# no beep sounds
-setopt nolistbeep
-
+# history settings
+export HISTFILE=~/.zsh_history
+export HISTSIZE=10000
+export SAVEHIST=10000
 # append history when exit shell
 setopt append_history
 
 # extended format for history
 setopt extended_history
+
+# beep when no history
+unsetopt hist_beep
 
 # delete duplicated history when register command
 setopt hist_ignore_all_dups
@@ -76,22 +60,37 @@ setopt prompt_cr
 # visible CR when output CR by prompt_cr
 setopt prompt_sp
 
-# load $HOME/.zsh/*
-if [ -d $HOME/.zsh ]; then
-  for i in `ls -1 $HOME/.zsh`; do
-    echo "📦  Load $i"
-    src=$HOME/.zsh/$i; [ -f $src ] && . $src
+# powerline-shell
+function _update_ps1() {
+    export PS1="$(~/powerline-shell.py $? 2> /dev/null)"
+}
+
+export PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+
+function powerline_precmd() {
+	PS1="$(powerline-shell --shell zsh $?)"
+}
+
+function install_powerline_precmd() {
+  for s in "${precmd_functions[@]}"; do
+    if [ "$s" = "powerline_precmd" ]; then
+      return
+    fi
   done
+  precmd_functions+=(powerline_precmd)
+}
+
+if [ "$TERM" != "linux" ]; then
+    install_powerline_precmd
 fi
+
+# PROMPT for correct
+SPROMPT="zsh: Did you mean: %{[4m[31m%}%r%{[14m[0m%} [nyae]? "
+
 
 # completion settings
 autoload -Uz compinit
 compinit -u
-
-# predictive conversion
-autoload predict-on
-predict-on
-
 # don't create new prompt
 setopt always_last_prompt
 
@@ -113,6 +112,9 @@ unsetopt menu_complete
 # don't substring alias when complement
 setopt complete_aliases
 
+# beep when no result
+unsetopt list_beep
+
 # reduce line of list
 setopt list_packed
 
@@ -127,16 +129,11 @@ zstyle ':completion:*' use-cache true
 zstyle ':completion:*:default' menu select=3
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
-# auto change directry, adbridgement "cd"
-setopt auto_cd
-# auto ls after cd
-function chpwd() { ls }
-# alias
-alias ...='cd ../..'
-alias ....='cd ../../..'
-
 # color settings
 autoload -U colors: colors
+
+# auto change directory
+setopt auto_cd
 
 # correct command
 setopt correct
@@ -153,47 +150,90 @@ setopt print_eight_bit
 setopt extended_glob
 setopt globdots
 
-# powerline-shell
-function _update_ps1() {
-    export PS1="$(~/powerline-shell.py $? 2> /dev/null)"
-}
-
-export PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-
-function powerline_precmd() {
-	PS1="$(powerline-shell --shell zsh $?)"
-}
-
-
-function install_powerline_precmd() {
-  for s in "${precmd_functions[@]}"; do
-    if [ "$s" = "powerline_precmd" ]; then
-      return
-    fi
-  done
-  precmd_functions+=(powerline_precmd)
-}
-
-if [ "$TERM" != "linux" ]; then
-    install_powerline_precmd
+brew=`which brew 2>&1`
+if [[ $? == 0 ]]; then
+        . `brew --prefix`/etc/profile.d/z.sh
 fi
+function precmd ()
+{
+        brew=`which brew 2>&1`
+        if [[ $? == 0 ]]; then
+                _z --add "$(pwd -P)"
+        fi
+}
 
-# xcode
+
+# gi
+function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
+
+#local
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
+# alias
+alias ls='ls -a -G'
+alias dev='cd ~/Develop'
+
+## docker
+alias dl='docker ps -l -q'
+alias da='docker ps -a'
+alias dat='docker attach `dl`'
+
+#Hub
+eval "$(hub alias -s)"
+
+## bear
+alias bear='~/dotfiles/scripts/bear.swift'
+
+## processing
+alias processing='processing-java'
+
+# Check $fpath
+echo $fpath
+
+## xcode
 function xcode() {
-  xcworkspace=$(ls | grep --color=never .xcworkspace | head -1)
-  xcodeproj=$(ls | grep --color=never .xcodeproj | head -1)
-  xcode=${$(xcode-select -p)%/*/*}
-  if [[ -n ${xcworkspace} ]]; then
-    echo "Open ${xcworkspace}"
-    open -a ${xcode} ${xcworkspace}
-  elif [[ -n ${xcodeproj} ]]; then
-    echo "Open ${xcodeproj}"
-    open -a ${xcode} ${xcodeproj}
+    xcworkspace=$(ls | grep --color=never .xcworkspace | head -1)
+    xcodeproj=$(ls | grep --color=never .xcodeproj | head -1)
+    xcode=${$(xcode-select -p)%/*/*}
+    if [[ -n ${xcworkspace} ]]; then
+        echo "Open ${xcworkspace}"
+        open -a ${xcode} ${xcworkspace}
+    elif [[ -n ${xcodeproj} ]]; then
+        echo "Open ${xcodeproj}"
+        open -a ${xcode} ${xcodeproj}
+    else
+        echo "Not found Xcode files"
+    fi
+}
+
+## peco
+function ch() {
+	git ch `git ba | peco --layout bottom-up --prompt "Git Branch" | sed 's|remotes/origin/||'`
+}
+function zz() {
+  which peco z > /dev/null
+  if [ $? -ne 0 ]; then
+    echo "Please install peco and z"
+    return 1
+  fi
+  local res=$(z | sort -rn | cut -c 12- | peco --layout bottom-up --prompt "Dir")
+  if [ -n "$res" ]; then
+    BUFFER+="cd '$res'"
+    zle accept-line
   else
-    echo "Not found Xcode files"
+    return 1
   fi
 }
+zle -N zz
+bindkey '^z' zz
 
+function incremental_mdfind() {
+    cd "$(mdfind -onlyin ./ 'kMDItemContentType == "public.folder" || kMDItemFSNodeCount > 0' | sort -r | peco --layout bottom-up --prompt "Dir mdfind" --query="$*")"
+    zle accept-line
+}
+zle -N incremental_mdfind
+bindkey '^t' incremental_mdfind
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source ~/.zsh.d/z.sh
+fuction peco-ghq() {
+    ghq look $(ghq list | peco)
+}

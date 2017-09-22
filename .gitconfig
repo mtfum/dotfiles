@@ -8,7 +8,7 @@
 [pull]
 	rebase = true
 [init]
-	templatedir = /Users/FumiyaYamanaka/.git_template/
+	templatedir = /Users/fumiya/.git_template/
 [color]
 	diff = auto
 	status = auto
