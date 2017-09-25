@@ -6,6 +6,7 @@
 # zplug load --verbose
 #
 
+
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # use key map like emacs
@@ -48,6 +49,11 @@ bindkey "^N" history-beginning-search-forward-end
 
 
 # prompt settings
+
+# for https://github.com/sindresorhus/pure
+autoload -U promptinit; promptinit
+prompt pure
+
 # variable expansion for prompt
 setopt prompt_subst
 
@@ -60,37 +66,13 @@ setopt prompt_cr
 # visible CR when output CR by prompt_cr
 setopt prompt_sp
 
-# powerline-shell
-function _update_ps1() {
-    export PS1="$(~/powerline-shell.py $? 2> /dev/null)"
-}
-
-export PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-
-function powerline_precmd() {
-	PS1="$(powerline-shell --shell zsh $?)"
-}
-
-function install_powerline_precmd() {
-  for s in "${precmd_functions[@]}"; do
-    if [ "$s" = "powerline_precmd" ]; then
-      return
-    fi
-  done
-  precmd_functions+=(powerline_precmd)
-}
-
-if [ "$TERM" != "linux" ]; then
-    install_powerline_precmd
-fi
-
 # PROMPT for correct
 SPROMPT="zsh: Did you mean: %{[4m[31m%}%r%{[14m[0m%} [nyae]? "
-
 
 # completion settings
 autoload -Uz compinit
 compinit -u
+
 # don't create new prompt
 setopt always_last_prompt
 

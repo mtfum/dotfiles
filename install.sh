@@ -59,3 +59,5 @@ if [[ -f $dotfile ]]; then
 echo "😎 Created $1/$dotfile$suffix"
 done
 
+ln -snfv "$PWD/package.json" "$HOME"
+

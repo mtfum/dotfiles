@@ -1,0 +1,19 @@
+{
+  "name": "my-package",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mtfum/dotfiles.git"
+  },
+  "author": "mtfum",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mtfum/dotfiles/issues"
+  },
+  "homepage": "https://github.com/mtfum/dotfiles#readme"
+}

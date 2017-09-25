@@ -1,4 +1,4 @@
 # Instlation
 
-`curl -L https://github.com/mtfum/dotfiles/"${branch:-master}"/install.sh`
+`curl -L "raw.github.com/mtfum/dotfiles/master/install.sh"`
 
