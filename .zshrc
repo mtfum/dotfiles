@@ -51,6 +51,7 @@ bindkey "^N" history-beginning-search-forward-end
 # prompt settings
 
 # for https://github.com/sindresorhus/pure
+# .zshrc
 autoload -U promptinit; promptinit
 prompt pure
 
@@ -116,6 +117,11 @@ autoload -U colors: colors
 
 # auto change directory
 setopt auto_cd
+# auto ls after cd		
+function chpwd() { ls }		
+# alias		
+alias ...='cd ../..'		
+alias ....='cd ../../..'
 
 # correct command
 setopt correct
@@ -159,6 +165,9 @@ alias dev='cd ~/Develop'
 alias dl='docker ps -l -q'
 alias da='docker ps -a'
 alias dat='docker attach `dl`'
+
+#
+alias airport=/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport
 
 #Hub
 eval "$(hub alias -s)"
@@ -219,3 +228,4 @@ bindkey '^t' incremental_mdfind
 fuction peco-ghq() {
     ghq look $(ghq list | peco)
 }
+
