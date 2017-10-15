@@ -229,3 +229,10 @@ fuction peco-ghq() {
     ghq look $(ghq list | peco)
 }
 
+function wifi() {
+
+	networksetup -setairportpower en0 off
+	networksetup -setairportpower en0 on
+}
+
+
