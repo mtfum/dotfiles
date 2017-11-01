@@ -117,10 +117,10 @@ autoload -U colors: colors
 
 # auto change directory
 setopt auto_cd
-# auto ls after cd		
-function chpwd() { ls }		
-# alias		
-alias ...='cd ../..'		
+# auto ls after cd
+function chpwd() { ls }
+# alias
+alias ...='cd ../..'
 alias ....='cd ../../..'
 
 # correct command
@@ -181,6 +181,14 @@ alias processing='processing-java'
 # Check $fpath
 echo $fpath
 
+# xcode-select
+xcs() {
+  xcode=$(ls /Applications/ | grep Xcode | fzf | awk '{ print $1 }')
+
+  sudo xcode-select -s /Applications/$xcode
+  return
+}
+
 ## xcode
 function xcode() {
     xcworkspace=$(ls | grep --color=never .xcworkspace | head -1)
@@ -235,4 +243,38 @@ function wifi() {
 	networksetup -setairportpower en0 on
 }
 
+# worktree移動
+function cdworktree() {
+    # カレントディレクトリがGitリポジトリ上かどうか
+    git rev-parse &>/dev/null
+    if [ $? -ne 0 ]; then
+        echo fatal: Not a git repository.
+        return
+    fi
 
+    local selectedWorkTreeDir=`git worktree list | fzf | awk '{print $1}'`
+
+    if [ "$selectedWorkTreeDir" = "" ]; then
+        # Ctrl-C.
+        return
+    fi
+
+    cd ${selectedWorkTreeDir}
+}
+
+# fbr - checkout git branch
+fbr() {
+  local branches branch
+  branches=$(git branch -vv) &&
+  branch=$(echo "$branches" | fzf +m) &&
+  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+}
+
+# fbrm - checkout git branch (including remote branches)
+fbrm() {
+  local branches branch
+  branches=$(git branch --all | grep -v HEAD) &&
+  branch=$(echo "$branches" |
+           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
