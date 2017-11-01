@@ -44,6 +44,8 @@
 	ba = branch -a
 	bd = branch -d
 	bD = branch -D
+# pull
+	pul = pull -v
 # rebase
 	red = rebase develop
 	recon = rebase --continue
