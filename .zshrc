@@ -243,8 +243,8 @@ function wifi() {
 	networksetup -setairportpower en0 on
 }
 
-# worktree移動
-function cdworktree() {
+# worktree移動 - cd worktrees
+fcdw() {
     # カレントディレクトリがGitリポジトリ上かどうか
     git rev-parse &>/dev/null
     if [ $? -ne 0 ]; then
@@ -285,4 +285,23 @@ fbrd() {
   branches=$(git branch -vv) &&
   branch=$(echo "$branches" | fzf +m) &&
   git branch -d $(echo "$branch" | awk '{print $1}')
+}
+
+# fchb - git worktree add ./worktree/hoge hoge
+fwa() {
+  echo "TODO: worktreeの中にいないか、すでに存在しないか"
+  # カレントディレクトリがGitリポジトリ上かどうか
+  git rev-parse &>/dev/null
+  if [ $? -ne 0 ]; then
+      echo fatal: Not a git repository.
+      return
+  fi
+
+  local branch directory
+  branch=yama/$1
+  directory=./worktree/$1
+
+  git branch $branch &&
+  git worktree add $directory $branch &&
+  cd $directory
 }
