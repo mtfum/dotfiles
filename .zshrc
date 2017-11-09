@@ -178,9 +178,6 @@ alias bear='~/dotfiles/scripts/bear.swift'
 ## processing
 alias processing='processing-java'
 
-# Check $fpath
-echo $fpath
-
 # xcode-select
 xcs() {
   xcode=$(ls /Applications/ | grep Xcode | fzf | awk '{ print $1 }')
@@ -305,3 +302,5 @@ fwa() {
   git worktree add $directory $branch &&
   cd $directory
 }
+
+echo "🎉 Completed to source .zshrc 🎉"
