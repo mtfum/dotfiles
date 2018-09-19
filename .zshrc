@@ -9,8 +9,26 @@
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
+# laravel
+export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+
+# rustup
+export PATH="$PATH:$HOME/.cargo/bin"
+
+# pyenv
+PYENV_ROOT=~/.pyenv
+export PATH=$PATH:$PYENV_ROOT/bin
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
 # use key map like emacs
 bindkey -e
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/Users/fumiya.yamanaka/google-cloud-sdk/path.zsh.inc'
+
+# The next line enables bash completion for gcloud.
+# source '/Users/fumiya.yamanaka/google-cloud-sdk/completion.bash.inc'
 
 # history settings
 export HISTFILE=~/.zsh_history
@@ -49,6 +67,11 @@ bindkey "^N" history-beginning-search-forward-end
 
 
 # prompt settings
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
 
 # for https://github.com/sindresorhus/pure
 # .zshrc
@@ -138,6 +161,10 @@ setopt print_eight_bit
 setopt extended_glob
 setopt globdots
 
+# nodebrew
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+# homebrew
 brew=`which brew 2>&1`
 if [[ $? == 0 ]]; then
         . `brew --prefix`/etc/profile.d/z.sh
@@ -240,6 +267,9 @@ function wifi() {
 	networksetup -setairportpower en0 on
 }
 
+# deriveddata削除
+alias derived='rm -rf ~/Library/Developer/Xcode/DerivedData/*'
+
 # worktree移動 - cd worktrees
 fcdw() {
     # カレントディレクトリがGitリポジトリ上かどうか
@@ -303,4 +333,8 @@ fwa() {
   cd $directory
 }
 
+# intl入れるためにbrewのphpにpath通す
+export PATH="/usr/local/opt/php@7.1/bin:$PATH"
+
 echo "🎉 Completed to source .zshrc 🎉"
+

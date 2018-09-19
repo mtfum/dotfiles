@@ -1,5 +1,5 @@
 [user]
-	name = Fumiya Yamanaka
+	name = mtfum
 	email = f.yamanaka1127@gmail.com
 [merge]
 	tool = vimdiff
@@ -8,7 +8,7 @@
 [pull]
 	rebase = true
 [init]
-	templatedir = /Users/fumiya/.git_template/
+		templatedir = ~/.git_template/
 [color]
 	diff = auto
 	status = auto

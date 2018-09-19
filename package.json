@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/mtfum/dotfiles/issues"
   },
-  "homepage": "https://github.com/mtfum/dotfiles#readme"
+  "homepage": "https://github.com/mtfum/dotfiles#readme",
+  "dependencies": {
+    "@line/clova-cek-sdk-nodejs": "^1.1.0",
+    "fs": "0.0.1-security",
+    "moment": "^2.22.0",
+    "pubnub": "^4.20.2",
+    "request": "^2.85.0",
+    "web3": "^1.0.0-beta.35"
+  }
 }
