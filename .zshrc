@@ -186,7 +186,9 @@ function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 
 # alias
 alias ls='ls -a -G'
-alias dev='cd ~/Develop'
+alias dev='cd ~/Developments'
+
+alias g='git'
 
 ## docker
 alias dl='docker ps -l -q'
@@ -198,6 +200,9 @@ alias airport=/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Cu
 
 #Hub
 eval "$(hub alias -s)"
+
+# fastlane
+export PATH="$HOME/.fastlane/bin:$PATH"
 
 ## bear
 alias bear='~/dotfiles/scripts/bear.swift'

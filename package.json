@@ -18,10 +18,20 @@
   "homepage": "https://github.com/mtfum/dotfiles#readme",
   "dependencies": {
     "@line/clova-cek-sdk-nodejs": "^1.1.0",
+    "async": "^2.6.1",
+    "cheerio": "^1.0.0-rc.2",
+    "csv": "^3.1.0",
+    "csvtojson": "^2.0.8",
     "fs": "0.0.1-security",
     "moment": "^2.22.0",
+    "plist": "^3.0.1",
+    "pretty-data": "^0.40.0",
     "pubnub": "^4.20.2",
     "request": "^2.85.0",
-    "web3": "^1.0.0-beta.35"
+    "web3": "^1.0.0-beta.35",
+    "xml2json": "^0.11.2"
+  },
+  "devDependencies": {
+    "config": "^2.0.1"
   }
 }
