@@ -69,5 +69,7 @@
 	see = browse
 # hub pull-request
 	pr = pull-request -o
+# clone
+	cl = clone
 [fetch]
 	prune = true

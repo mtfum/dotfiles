@@ -262,7 +262,7 @@ function incremental_mdfind() {
 zle -N incremental_mdfind
 bindkey '^t' incremental_mdfind
 
-fuction peco-ghq() {
+function peco-ghq() {
     ghq look $(ghq list | peco)
 }
 
