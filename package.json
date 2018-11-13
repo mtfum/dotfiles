@@ -19,15 +19,18 @@
   "dependencies": {
     "@line/clova-cek-sdk-nodejs": "^1.1.0",
     "async": "^2.6.1",
+    "bluebird": "^3.5.2",
     "cheerio": "^1.0.0-rc.2",
     "csv": "^3.1.0",
     "csvtojson": "^2.0.8",
     "fs": "0.0.1-security",
+    "ink": "^0.5.1",
     "moment": "^2.22.2",
     "plist": "^3.0.1",
     "pretty-data": "^0.40.0",
     "pubnub": "^4.21.5",
     "request": "^2.88.0",
+    "vue-cli": "^2.9.6",
     "web3": "^1.0.0-beta.36",
     "xml2json": "^0.11.2"
   },

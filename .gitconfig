@@ -54,6 +54,7 @@
 	d = diff
 # reset
 	cancel = reset --soft HEAD^	
+	unstage = reset HEAD
 # log
 	logg = log --graph --all --decorate --no-merges
 # stash

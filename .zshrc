@@ -195,6 +195,10 @@ alias dl='docker ps -l -q'
 alias da='docker ps -a'
 alias dat='docker attach `dl`'
 
+# get .gitignore from gitignore.io with Peco
+function _gi() { curl -s https://www.gitignore.io/api/$1 ;}
+alias gi='_gi $(_gi list | gsed "s/,/\n/g" | peco )'
+
 #
 alias airport=/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport
 
