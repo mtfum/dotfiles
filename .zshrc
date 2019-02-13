@@ -238,6 +238,7 @@ function xcode() {
     fi
 }
 
+
 ## peco
 function ch() {
 	git ch `git ba | peco --layout bottom-up --prompt "Git Branch" | sed 's|remotes/origin/||'`
