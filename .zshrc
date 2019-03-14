@@ -348,3 +348,5 @@ export PATH="/usr/local/opt/php@7.1/bin:$PATH"
 
 echo "🎉 Completed to source .zshrc 🎉"
 
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
