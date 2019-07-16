@@ -346,6 +346,9 @@ fwa() {
 # intl入れるためにbrewのphpにpath通す
 export PATH="/usr/local/opt/php@7.1/bin:$PATH"
 
+# sshを表示する
+export GIT_SSH=$(which ssh)
+
 echo "🎉 Completed to source .zshrc 🎉"
 
 
