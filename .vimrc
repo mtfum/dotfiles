@@ -34,10 +34,6 @@ autocmd FileType text setlocal textwidth=0
 " Prettier — An Opinionated Javascript Formatter, after 'npm install -g prettier'
 autocmd FileType javascript set formatprg=prettier\ --stdin
 
-" Ctrl+jでinsert modeを終了する
-noremap <C-j> <ESC>
-noremap! <C-j> <ESC>
-
 " ノーマルモードで改行をEnterで加える"
 noremap <CR> o<esc>
 

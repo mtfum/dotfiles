@@ -136,7 +136,8 @@ module.exports = {
 		"hyper-opacity",
 		"hyper-dracula",
 		"hyper-tabs-enhanced",
-		"hyper-search"
+		"hyper-search",
+		'hypercwd'
 	],
 
 	// 参考: https://github.com/henrikdahl/hyper-tabs-enhanced
