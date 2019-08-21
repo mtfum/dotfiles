@@ -50,6 +50,15 @@ imap <C-d> <Del>
 imap <C-h> <BS>
 imap <C-k> <C-r>=<SID>kill()<CR>
 
+" Ctrl + e でノーマルモードに変更してカーソルを行末に移動して、挿入モードにする
+inoremap <C-e> <Esc>$a
+
+inoremap <C-a> <Esc>^a
+
+noremap <C-e> <Esc>$a
+
+noremap <C-a> <Esc>^a
+
 function! s:home()
   let start_column = col('.')
   normal! ^
@@ -131,6 +140,9 @@ Plug 'othree/yajs.vim'
 
 " Auto Completion Framework
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+" Vim syntax highlighting for Vue components.
+Plug 'leafOfTree/vim-vue-plugin'
 
 " Initialize plugin system
 call plug#end()

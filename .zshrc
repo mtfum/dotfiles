@@ -351,5 +351,11 @@ export GIT_SSH=$(which ssh)
 
 echo "🎉 Completed to source .zshrc 🎉"
 
-
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# fastlane
+export FASTLANE_PASSWORD="4WD,46EdkynRL639i#LzW>rC"
+
+
