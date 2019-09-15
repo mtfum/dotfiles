@@ -359,3 +359,4 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export FASTLANE_PASSWORD="4WD,46EdkynRL639i#LzW>rC"
 
 
+export PATH="/usr/local/opt/gettext/bin:$PATH"
