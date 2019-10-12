@@ -137,7 +137,8 @@ module.exports = {
 		"hyper-dracula",
 		"hyper-tabs-enhanced",
 		"hyper-search",
-		'hypercwd'
+		'hypercwd',
+		"hyperline",
 	],
 
 	// 参考: https://github.com/henrikdahl/hyper-tabs-enhanced

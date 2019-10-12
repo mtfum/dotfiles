@@ -23,6 +23,7 @@
     "cheerio": "^1.0.0-rc.2",
     "csv": "^3.1.0",
     "csvtojson": "^2.0.8",
+    "firebase-admin": "^8.6.0",
     "fs": "0.0.1-security",
     "hyper-search": "^0.3.0",
     "ink": "^0.5.1",

@@ -15,7 +15,7 @@ export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 # rustup
 export PATH="$PATH:$HOME/.cargo/bin"
 
-# pyenv
+# Python Version Manager = pyenv
 PYENV_ROOT=~/.pyenv
 export PATH=$PATH:$PYENV_ROOT/bin
 eval "$(pyenv init -)"
@@ -358,5 +358,11 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 # fastlane
 export FASTLANE_PASSWORD="4WD,46EdkynRL639i#LzW>rC"
 
+# starship
+eval "$(starship init zsh)"
 
 export PATH="/usr/local/opt/gettext/bin:$PATH"
+export PATH="/usr/local/opt/icu4c/bin:$PATH"
+export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+export PATH="/usr/local/opt/node/bin:$PATH"
+export PATH="/usr/local/opt/node@12/bin:$PATH"
