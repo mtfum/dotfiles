@@ -65,18 +65,12 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
 
-
 # prompt settings
 
 # Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
-
-# for https://github.com/sindresorhus/pure
-# .zshrc
-autoload -U promptinit; promptinit
-prompt pure
+# if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+#   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+# fi
 
 # variable expansion for prompt
 setopt prompt_subst
@@ -335,7 +329,7 @@ fwa() {
   fi
 
   local branch directory
-  branch=yama/$1
+  branch=mtfum/$1
   directory=./worktree/$1
 
   git branch $branch &&
@@ -349,20 +343,20 @@ export PATH="/usr/local/opt/php@7.1/bin:$PATH"
 # sshを表示する
 export GIT_SSH=$(which ssh)
 
-echo "🎉 Completed to source .zshrc 🎉"
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # fastlane
 export FASTLANE_PASSWORD="4WD,46EdkynRL639i#LzW>rC"
 
-# starship
-eval "$(starship init zsh)"
-
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="/usr/local/opt/gettext/bin:$PATH"
 export PATH="/usr/local/opt/icu4c/bin:$PATH"
 export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 export PATH="/usr/local/opt/node/bin:$PATH"
 export PATH="/usr/local/opt/node@12/bin:$PATH"
+
+# starship: https://github.com/starship/starship
+eval "$(starship init zsh)"
+
+echo "🎉  Completed to source .zshrc 🎉 "
+
