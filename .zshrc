@@ -181,7 +181,7 @@ function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 # alias
 alias ls='ls -a -G'
 alias dev='cd ~/Developments'
-
+alias sed='gsed'
 alias g='git'
 
 ## docker
@@ -354,9 +354,16 @@ export PATH="/usr/local/opt/icu4c/bin:$PATH"
 export PATH="/usr/local/opt/icu4c/sbin:$PATH"
 export PATH="/usr/local/opt/node/bin:$PATH"
 export PATH="/usr/local/opt/node@12/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
 
 # starship: https://github.com/starship/starship
 eval "$(starship init zsh)"
 
-echo "🎉  Completed to source .zshrc 🎉 "
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
 
+# Android: https://docs.expo.io/versions/v36.0.0/workflow/android-studio-emulator/ 
+export ANDROID_SDK=/Users/fumiya.yamanaka/Library/Android/sdk
+export PATH=/Users/fumiya.yamanaka/Library/Android/sdk/platform-tools:$PATH
+
+echo "🎉  Completed to source .zshrc 🎉 "
