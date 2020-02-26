@@ -41,7 +41,7 @@ module.exports = {
 		backgroundColor: '#000',
 
 		// terminal selection color
-		selectionColor: 'rgba(248,28,229,0.3)',
+		selectionColor: 'rgba(248,28,229,0.5)',
 
 		// border color (window, tabs)
 		borderColor: '#333',
@@ -108,7 +108,7 @@ module.exports = {
 		env: {},
 
 		// set to `false` for no bell
-		bell: 'SOUND',
+		bell: 'false',
 
 		// if `true` (without backticks and without quotes), selected text will automatically be copied to the clipboard
 		copyOnSelect: false,

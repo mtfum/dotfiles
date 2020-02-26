@@ -88,8 +88,19 @@ setopt prompt_sp
 SPROMPT="zsh: Did you mean: %{[4m[31m%}%r%{[14m[0m%} [nyae]? "
 
 # completion settings
+source $HOME/.zsh/completion.zsh
+# Initialize the completion system
 autoload -Uz compinit
-compinit -u
+# Cache completion if nothing changed - faster startup time
+typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)
+if [ $(date +'%j') != $updated_at ]; then
+  compinit -i
+else
+  compinit -C -i
+fi
+# Enhanced form of menu completion called `menu selection'
+zmodload -i zsh/complist
+
 
 # don't create new prompt
 setopt always_last_prompt
@@ -367,3 +378,7 @@ export ANDROID_SDK=/Users/fumiya.yamanaka/Library/Android/sdk
 export PATH=/Users/fumiya.yamanaka/Library/Android/sdk/platform-tools:$PATH
 
 echo "🎉  Completed to source .zshrc 🎉 "
+source /Users/fumiya.yamanaka/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+source /Users/fumiya.yamanaka/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /Users/fumiya.yamanaka/.zsh/history.zsh
+source /Users/fumiya.yamanaka/.zsh/key-bindings.zsh
