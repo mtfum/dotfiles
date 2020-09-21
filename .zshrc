@@ -6,6 +6,7 @@
 # zplug load --verbose
 #
 
+export LANG=ja_JP.UTF-8
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
@@ -212,8 +213,9 @@ eval "$(hub alias -s)"
 
 # fastlane
 export PATH="$HOME/.fastlane/bin:$PATH"
+export FASTLANE_PASSWORD="4WD,46EdkynRL639i#LzW>rC"
 
-## bear
+# bear
 alias bear='~/dotfiles/scripts/bear.swift'
 
 ## processing
@@ -355,9 +357,6 @@ export PATH="/usr/local/opt/php@7.1/bin:$PATH"
 export GIT_SSH=$(which ssh)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# fastlane
-export FASTLANE_PASSWORD="4WD,46EdkynRL639i#LzW>rC"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="/usr/local/opt/gettext/bin:$PATH"

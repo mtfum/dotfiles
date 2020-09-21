@@ -4,6 +4,8 @@ set number
 set notitle
 " カーソルが何行目の何列目に置かれているかを表示する
 set ruler
+" TABキーを押した際にタブ文字の代わりにスペースを入れる
+set expandtab
 " タブ文字の表示幅
 set tabstop=2
 " Vimが挿入するインデントの幅

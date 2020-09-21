@@ -105,7 +105,10 @@ module.exports = {
 		shellArgs: ['--login'],
 
 		// for environment variables
-		env: {},
+		env: {
+      LANG: "ja_JP.UTF-8",
+      LC_ALL: "ja_JP.UTF-8"
+    },
 
 		// set to `false` for no bell
 		bell: 'false',
@@ -124,6 +127,11 @@ module.exports = {
 		// bellSoundURL: 'http://example.com/bell.mp3',
 
 		// for advanced config flags please refer to https://hyper.is/#cfg
+
+    opacity: {
+      focus: 0.9,
+      blur: 0.5
+    }
 	},
 
 	// a list of plugins to fetch and install from npm
