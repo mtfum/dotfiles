@@ -221,3 +221,6 @@ imap { {}<LEFT>
 imap [ []<LEFT>
 imap ( ()<LEFT>
 """"""""""""""""""""""""""""""
+
+" for python3
+set pythondll=libpython3.8.so

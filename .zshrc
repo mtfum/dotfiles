@@ -376,8 +376,27 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export ANDROID_SDK=/Users/fumiya.yamanaka/Library/Android/sdk
 export PATH=/Users/fumiya.yamanaka/Library/Android/sdk/platform-tools:$PATH
 
-echo "🎉  Completed to source .zshrc 🎉 "
+# dart
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+export PATH="$PATH":"$HOME/fvm/default/bin"
+
 source /Users/fumiya.yamanaka/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source /Users/fumiya.yamanaka/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /Users/fumiya.yamanaka/.zsh/history.zsh
 source /Users/fumiya.yamanaka/.zsh/key-bindings.zsh
+export PATH="/usr/local/sbin:$PATH"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# JAVA_HOME, maven
+export JAVA_HOME=$(/usr/libexec/java_home)
+export PATH=$PATH:/opt/apache-maven/bin
+
+# node version manager
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+echo "🎉  Completed to source .zshrc 🎉 "
+
