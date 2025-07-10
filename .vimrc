@@ -224,3 +224,8 @@ imap ( ()<LEFT>
 
 " for python3
 set pythondll=libpython3.8.so
+" vimrc に以下を追加
+
+" マウスドラッグで Vim の Visual モードを使う
+set mouse=a
+

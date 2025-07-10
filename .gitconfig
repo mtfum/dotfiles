@@ -1,5 +1,5 @@
 [user]
-	name = mtfum
+	name = Fumiya Yamanaka
 	email = f.yamanaka1127@gmail.com
 [merge]
 	tool = vimdiff
@@ -34,9 +34,6 @@
 	cam = commit --amend
 # add + commit
 	acm = commit -a -m
-# switch
-  sw = switch
-  swb = switch -c
 # checkout
 	ch = checkout
 	chb = checkout -b
@@ -74,11 +71,15 @@
 # hub pull-request
 	pr = pull-request -o
 # clone
-	cl = clone
+  cl = clone
+# switch
+  sw = switch
+  swc = switch -c
 [fetch]
 	prune = true
 [filter "lfs"]
-	process = git-lfs filter-process
-	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+  
