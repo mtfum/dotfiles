@@ -16,11 +16,8 @@ export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 # rustup
 export PATH="$PATH:$HOME/.cargo/bin"
 
-# Python Version Manager = pyenv
-PYENV_ROOT=~/.pyenv
-export PATH=$PATH:$PYENV_ROOT/bin
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# mise - universal version manager
+eval "$(mise activate zsh)"
 
 # use key map like emacs
 bindkey -e
@@ -167,8 +164,6 @@ setopt print_eight_bit
 setopt extended_glob
 setopt globdots
 
-# nodebrew
-export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # homebrew
 brew=`which brew 2>&1`
@@ -393,10 +388,6 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH=$PATH:/opt/apache-maven/bin
 
-# node version manager
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 echo "🎉  Completed to source .zshrc 🎉 "
 

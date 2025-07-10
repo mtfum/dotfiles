@@ -1,0 +1,15 @@
+[tools]
+node = "lts"
+python = "3.12"
+ruby = "3.3"
+go = "1.22"
+
+[env]
+PATH = [
+  "~/.local/bin",
+  "./node_modules/.bin"
+]
+
+[settings]
+experimental = true
+legacy_version_file = true

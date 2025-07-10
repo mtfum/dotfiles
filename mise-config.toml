@@ -1,0 +1,8 @@
+[tools]
+node = "24"
+"npm:@anthropic-ai/claude-code" = "latest"
+"npm:@google/gemini-cli" = "latest"
+tuist = "4.55.6"
+
+[settings]
+experimental = true
