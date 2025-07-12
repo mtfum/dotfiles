@@ -31,5 +31,8 @@ license-plist = "latest"
 # iOS Development
 tuist = "4.55.6"
 
+# Go workspace management
+"npm:@shutootaki/gwm" = "latest"
+
 [settings]
 experimental = true

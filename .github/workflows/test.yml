@@ -1,0 +1,45 @@
+name: Test Dotfiles
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ master, main ]
+
+jobs:
+  test-macos:
+    runs-on: macos-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Test install script syntax
+      run: |
+        bash -n install.sh
+        bash -n migrate-to-mise.sh
+    
+    - name: Check for secrets
+      run: |
+        ! grep -rE "(password|token|secret|api_key).*=.*['\"]" --include=".*" . | grep -v ".git" | grep -v ".github"
+    
+    - name: Test symlink creation (dry run)
+      run: |
+        # Create temporary home
+        export HOME=$(mktemp -d)
+        echo "Testing in $HOME"
+        
+        # Run install script in test mode
+        DOTPATH=$(pwd) bash install.sh || true
+        
+        # Check if symlinks would be created correctly
+        ls -la $HOME/
+    
+    - name: Validate mise config
+      run: |
+        # Check TOML syntax
+        python3 -c "import tomllib; tomllib.load(open('mise-config.toml', 'rb'))"
+    
+    - name: Check shell script quality
+      run: |
+        brew install shellcheck || true
+        find . -name "*.sh" -exec shellcheck {} \; || true

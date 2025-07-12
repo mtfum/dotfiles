@@ -1,6 +1,6 @@
-[user]
-	name = Fumiya Yamanaka
-	email = f.yamanaka1127@gmail.com
+# Personal information moved to ~/.gitconfig.local
+[include]
+	path = ~/.gitconfig.local
 [merge]
 	tool = vimdiff
 [push]
@@ -9,6 +9,8 @@
 	rebase = true
 [init]
 		templatedir = ~/.git_template/
+[core]
+	hooksPath = .githooks
 [color]
 	diff = auto
 	status = auto

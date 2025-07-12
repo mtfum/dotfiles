@@ -36,6 +36,11 @@ eval "$(mise activate zsh)"
 # mise shims for version management (fallback)
 export PATH="$HOME/.local/share/mise/shims:$PATH"
 
+# Load modular zsh configurations
+for config in ~/.config/zsh/{aliases,functions,completions}/*.zsh(N); do
+  source $config
+done
+
 # use key map like emacs
 bindkey -e
 

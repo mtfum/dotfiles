@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Pre-commit hook for dotfiles repository
+
+echo "🔍 Running pre-commit checks..."
+
+# Check for sensitive information
+if grep -rE "(password|token|secret|api_key).*=.*['\"]" --include=".*" . 2>/dev/null | grep -v ".git" | grep -v "node_modules" | grep -v "yarn.lock"; then
+    echo "❌ Found potential secrets in dotfiles!"
+    echo "Please remove sensitive information or use .gitconfig.local pattern"
+    exit 1
+fi
+
+# Check shell script syntax
+for script in $(find . -name "*.sh" -o -name "*.zsh" | grep -v ".git" | grep -v "node_modules"); do
+    if [[ "$script" == *.zsh ]]; then
+        if ! zsh -n "$script" 2>/dev/null; then
+            echo "❌ Syntax error in $script"
+            exit 1
+        fi
+    else
+        if ! bash -n "$script" 2>/dev/null; then
+            echo "❌ Syntax error in $script"
+            exit 1
+        fi
+    fi
+done
+
+echo "✅ All pre-commit checks passed!"

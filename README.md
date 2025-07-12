@@ -114,3 +114,28 @@ git pull
 brew update && brew upgrade
 mise upgrade
 ```
+
+## Advanced Features
+
+### Secret Management
+Sensitive information like email is stored in `~/.gitconfig.local` (not tracked by git). Copy `.gitconfig.local.example` and update with your information.
+
+### Modular Shell Configuration
+Shell configurations are organized in:
+- `~/.config/zsh/aliases/` - Command aliases
+- `~/.config/zsh/functions/` - Shell functions
+- `~/.config/zsh/completions/` - Tab completions
+
+### Backup & Restore
+Create a backup before major changes:
+```bash
+~/.dotfiles/scripts/backup-dotfiles.sh
+```
+
+### Git Hooks
+This repository includes pre-commit hooks that check for:
+- Sensitive information in configs
+- Shell script syntax errors
+
+### Testing
+The repository includes GitHub Actions for automated testing of installation scripts and configurations.

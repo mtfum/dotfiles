@@ -113,6 +113,13 @@ mkdir -p "$HOME/.config/mise"
 ln -snfv "$DOTPATH/mise-config.toml" "$HOME/.config/mise/config.toml"
 echo "✅ Linked mise config"
 
+# Handle .gitconfig.local
+if [ ! -f "$HOME/.gitconfig.local" ] && [ -f "$DOTPATH/.gitconfig.local.example" ]; then
+    echo "📝 Creating .gitconfig.local from example..."
+    cp "$DOTPATH/.gitconfig.local.example" "$HOME/.gitconfig.local"
+    echo "⚠️  Please update ~/.gitconfig.local with your personal information"
+fi
+
 # Note: Old version manager cleanup removed since .zshrc is now a symlink
 # Version managers should be removed from the dotfiles/.zshrc directly
 
