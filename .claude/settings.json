@@ -1,0 +1,49 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"Invoke \\\"Stop\\\" event.\" with title \"Claude Code\" sound name \"Glass\"'"
+          }
+        ]
+      }
+    ],
+    "Bash": [
+      {
+        "matcher": "git:*",
+        "hooks": [
+          {
+            "type": "allow"
+          }
+        ]
+      }
+    ]
+  },
+  "tools": {
+    "disabled": [],
+    "enabled": [
+      "Read",
+      "Write",
+      "Edit",
+      "MultiEdit",
+      "Bash",
+      "Grep",
+      "Glob",
+      "LS",
+      "WebSearch",
+      "WebFetch",
+      "TodoWrite",
+      "Task",
+      "NotebookRead",
+      "NotebookEdit",
+      "exit_plan_mode"
+    ]
+  },
+  "environment": {
+    "DOTFILES_PATH": "~/.dotfiles",
+    "MISE_GLOBAL_CONFIG": "~/.config/mise/config.toml"
+  }
+}

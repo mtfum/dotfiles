@@ -120,6 +120,25 @@ if [ ! -f "$HOME/.gitconfig.local" ] && [ -f "$DOTPATH/.gitconfig.local.example"
     echo "⚠️  Please update ~/.gitconfig.local with your personal information"
 fi
 
+# Create Claude configuration symlinks
+if [ -d "$DOTPATH/.claude" ]; then
+    echo "🤖 Setting up Claude configuration..."
+    mkdir -p "$HOME/.claude"
+    
+    # Backup existing files if they exist and aren't symlinks
+    if [ -f "$HOME/.claude/CLAUDE.md" ] && [ ! -L "$HOME/.claude/CLAUDE.md" ]; then
+        mv "$HOME/.claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md.backup"
+    fi
+    if [ -f "$HOME/.claude/settings.json" ] && [ ! -L "$HOME/.claude/settings.json" ]; then
+        mv "$HOME/.claude/settings.json" "$HOME/.claude/settings.json.backup"
+    fi
+    
+    # Create symlinks
+    ln -snfv "$DOTPATH/.claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
+    ln -snfv "$DOTPATH/.claude/settings.json" "$HOME/.claude/settings.json"
+    echo "✅ Linked Claude configuration"
+fi
+
 # Note: Old version manager cleanup removed since .zshrc is now a symlink
 # Version managers should be removed from the dotfiles/.zshrc directly
 

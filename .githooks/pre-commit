@@ -12,7 +12,7 @@ if grep -rE "(password|token|secret|api_key).*=.*['\"]" --include=".*" . 2>/dev/
 fi
 
 # Check shell script syntax
-for script in $(find . -name "*.sh" -o -name "*.zsh" | grep -v ".git" | grep -v "node_modules"); do
+for script in $(find . -type f \( -name "*.sh" -o -name "*.zsh" \) | grep -v ".git" | grep -v "node_modules"); do
     if [[ "$script" == *.zsh ]]; then
         if ! zsh -n "$script" 2>/dev/null; then
             echo "❌ Syntax error in $script"

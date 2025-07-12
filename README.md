@@ -139,3 +139,10 @@ This repository includes pre-commit hooks that check for:
 
 ### Testing
 The repository includes GitHub Actions for automated testing of installation scripts and configurations.
+
+### Claude Code Configuration
+This repository includes configuration for Claude Code:
+- `~/.claude/CLAUDE.md` - User preferences and project instructions
+- `~/.claude/settings.json` - Tool settings and hooks configuration
+
+These files are automatically symlinked during installation.
