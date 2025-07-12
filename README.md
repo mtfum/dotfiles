@@ -77,7 +77,7 @@ exec zsh
 - **Aliases**: Docker, Git, and custom shortcuts
 
 ### Development Tools
-- **Languages**: Node.js 24, Python 3.12, Go 1.22, Ruby (via rbenv)
+- **Languages**: Node.js 24, Python 3.12, Go 1.22, Ruby 3.3.6
 - **iOS/macOS**: Xcode tools, SwiftLint, Carthage, CocoaPods
 - **Android**: Android SDK, Flutter
 - **Cloud**: Google Cloud SDK, Firebase CLI, Vercel CLI
