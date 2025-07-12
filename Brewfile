@@ -46,7 +46,7 @@ brew "blueutil"
 # iOS Development
 brew "carthage"
 brew "chisel"
-brew "cocoapods"
+# cocoapods - now installed as a gem via mise Ruby
 brew "libimobiledevice", args: ["HEAD"]
 brew "libusbmuxd", args: ["HEAD"]
 brew "ideviceinstaller"
