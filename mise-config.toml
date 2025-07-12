@@ -1,7 +1,22 @@
 [tools]
+# Languages
 node = "24"
 python = "3.12"
 go = "1.22"
+
+# CLI Tools (previously from Homebrew)
+jq = "latest"
+fzf = "latest"
+gh = "latest"
+ghq = "latest"
+hub = "latest"
+peco = "latest"
+starship = "latest"
+vim = "latest"
+heroku-cli = "latest"
+license-plist = "latest"
+
+# NPM Global Tools
 "npm:@anthropic-ai/claude-code" = "latest"
 "npm:@google/gemini-cli" = "latest"
 "npm:firebase-tools" = "latest"
@@ -12,6 +27,8 @@ go = "1.22"
 "npm:gitmoji-cli" = "latest"
 "npm:ts-node" = "latest"
 "npm:nodemon" = "latest"
+
+# iOS Development
 tuist = "4.55.6"
 
 [settings]

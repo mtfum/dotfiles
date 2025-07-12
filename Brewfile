@@ -1,3 +1,4 @@
+# Taps
 tap "artemnovichkov/projects"
 tap "blender/tap"
 tap "github/gh"
@@ -9,68 +10,70 @@ tap "homebrew/services"
 tap "kyoshidajp/ghkw"
 tap "mono0926/license-plist"
 tap "yonaskolb/mint", "https://github.com/yonaskolb/Mint.git"
+
+# Core Dependencies
 brew "openssl@1.1"
 brew "automake"
-brew "bluetoothconnector"
-brew "blueutil"
-brew "carthage"
-brew "chisel"
-brew "cmdshelf"
-brew "cocoapods"
-brew "composer"
-brew "dos2unix"
-brew "emacs"
-brew "emojify"
 brew "libtool"
 brew "freetype"
-brew "fzf"
-brew "gh"
-brew "ghq"
-brew "gibo"
-brew "git"
-brew "glfw"
-brew "gnu-sed"
-brew "goenv"
-brew "hub"
 brew "icu4c"
 brew "libxml2"
-brew "libimobiledevice", args: ["HEAD"]
-brew "ideviceinstaller"
-brew "ios-deploy"
-brew "jq"
-brew "libusbmuxd", args: ["HEAD"]
-brew "marathon-swift"
-brew "mbedtls", args: ["HEAD"]
-brew "mint"
-brew "mysql"
-brew "node"
-brew "nodebrew"
-brew "peco"
-brew "php@7.1"
-brew "pyenv"
-brew "pyenv-virtualenv"
-brew "ruby-build"
-brew "rbenv"
-brew "rename"
-brew "sourcery"
-brew "starship"
-brew "swiftlint"
-brew "ta-lib"
-brew "tig"
-brew "translate-shell"
-brew "tree"
-brew "vim"
-brew "wget"
-brew "xcodegen"
-brew "z"
 brew "zlib"
+brew "mbedtls", args: ["HEAD"]
+
+# Git & Development Tools (not available in mise)
+brew "git"
+brew "gibo"
+brew "tig"
+brew "tree"
+brew "wget"
+brew "dos2unix"
+brew "gnu-sed"
+brew "rename"
+
+# Shell & Terminal
 brew "zsh"
 brew "zsh-completions"
+brew "z"
+brew "emacs"
+brew "emojify"
+brew "translate-shell"
+
+# macOS & Bluetooth Tools
+brew "bluetoothconnector"
+brew "blueutil"
+
+# iOS Development
+brew "carthage"
+brew "chisel"
+brew "cocoapods"
+brew "libimobiledevice", args: ["HEAD"]
+brew "libusbmuxd", args: ["HEAD"]
+brew "ideviceinstaller"
+brew "ios-deploy"
+brew "mint"
+brew "marathon-swift"
+brew "sourcery"
+brew "swiftlint"
+brew "xcodegen"
 brew "artemnovichkov/projects/carting"
 brew "blender/tap/rome"
-brew "heroku/brew/heroku"
-brew "kyoshidajp/ghkw/ghkw"
 brew "mono0926/license-plist/license-plist"
+
+# Languages & Package Managers (kept for system-level needs)
+brew "composer"
+brew "php@7.1"
+brew "glfw"
+
+# Databases & Data
+brew "mysql"
+brew "ta-lib"
+
+# Other Tools
+brew "cmdshelf"
+brew "kyoshidajp/ghkw/ghkw"
+
+# Casks (GUI Applications)
 cask "amethyst"
 cask "dozer"
 cask "hyper"

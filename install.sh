@@ -16,6 +16,45 @@ die() {
     exit 1
 }
 
+# Install Git if not present
+if ! has "git"; then
+    echo "📦 Git not found. Installing Git..."
+    
+    # Check if on macOS
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        # Try to install Xcode Command Line Tools
+        echo "Installing Xcode Command Line Tools (this includes Git)..."
+        xcode-select --install 2>/dev/null
+        
+        # Wait for installation
+        echo "⏳ Please complete the Xcode Command Line Tools installation in the popup window."
+        echo "Press any key to continue after installation is complete..."
+        read -n 1 -s
+        
+        # Check if Git is now available
+        if ! has "git"; then
+            die "Git installation failed. Please install Git manually and try again."
+        fi
+    else
+        die "Please install Git manually for your operating system."
+    fi
+    
+    echo "✅ Git installed successfully!"
+fi
+
+# Install Homebrew if not present
+if ! has "brew"; then
+    echo "🍺 Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    
+    # Add Homebrew to PATH for Apple Silicon Macs
+    if [[ -f "/opt/homebrew/bin/brew" ]]; then
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+    fi
+    
+    echo "✅ Homebrew installed successfully!"
+fi
+
 # Clone dotfiles repository if not exists
 if [ ! -d "$DOTPATH" ]; then
     # git が使えるなら git
