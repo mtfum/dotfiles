@@ -1,7 +1,17 @@
 [tools]
 node = "24"
+python = "3.12"
+go = "1.22"
 "npm:@anthropic-ai/claude-code" = "latest"
 "npm:@google/gemini-cli" = "latest"
+"npm:firebase-tools" = "latest"
+"npm:vercel" = "latest"
+"npm:@vue/cli" = "latest"
+"npm:next" = "latest"
+"npm:wrangler" = "latest"
+"npm:gitmoji-cli" = "latest"
+"npm:ts-node" = "latest"
+"npm:nodemon" = "latest"
 tuist = "4.55.6"
 
 [settings]

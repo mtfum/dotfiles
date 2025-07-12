@@ -1,3 +1,11 @@
+# Enable completion
+fpath=(~/.zsh/completion $fpath)
+autoload -U compinit
+compinit
+
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
+
 # vim:set fdm=marker:
 
 # zplug
@@ -10,6 +18,13 @@ export LANG=ja_JP.UTF-8
 
 export XDG_CONFIG_HOME="$HOME/.config"
 
+# Oh my zesh error with Warp (https://github.com/warpdotdev/Warp/issues/936)
+if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
+  ZSH_THEME="avit"
+else
+  ZSH_THEME="robbyrussell"
+fi
+
 # laravel
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 
@@ -18,6 +33,8 @@ export PATH="$PATH:$HOME/.cargo/bin"
 
 # mise - universal version manager
 eval "$(mise activate zsh)"
+# mise shims for version management (fallback)
+export PATH="$HOME/.local/share/mise/shims:$PATH"
 
 # use key map like emacs
 bindkey -e
@@ -166,6 +183,7 @@ setopt globdots
 
 
 # homebrew
+export PATH=/opt/homebrew/bin:$PATH
 brew=`which brew 2>&1`
 if [[ $? == 0 ]]; then
         . `brew --prefix`/etc/profile.d/z.sh
@@ -364,9 +382,6 @@ export PATH="/usr/local/bin:$PATH"
 # starship: https://github.com/starship/starship
 eval "$(starship init zsh)"
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
 # Android: https://docs.expo.io/versions/v36.0.0/workflow/android-studio-emulator/ 
 export ANDROID_SDK=/Users/fumiya.yamanaka/Library/Android/sdk
 export PATH=/Users/fumiya.yamanaka/Library/Android/sdk/platform-tools:$PATH
@@ -374,6 +389,7 @@ export PATH=/Users/fumiya.yamanaka/Library/Android/sdk/platform-tools:$PATH
 # dart
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 export PATH="$PATH":"$HOME/fvm/default/bin"
+export PATH="/usr/lib/dart/bin:$PATH"
 
 source /Users/fumiya.yamanaka/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source /Users/fumiya.yamanaka/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -388,6 +404,45 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH=$PATH:/opt/apache-maven/bin
 
+# NVM (Node Version Manager)
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# OpenJDK 11
+export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
+
+# Solana
+export PATH="/Users/fumiya.yamanaka/Developments/lib/solana/bin:$PATH"
+
+# Miniconda3
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/fumiya.yamanaka/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/fumiya.yamanaka/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/fumiya.yamanaka/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/fumiya.yamanaka/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
+
+# Dart CLI completion
+[[ -f /Users/fumiya.yamanaka/.dart-cli-completion/zsh-config.zsh ]] && . /Users/fumiya.yamanaka/.dart-cli-completion/zsh-config.zsh || true
+
+# Google Cloud SDK
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/fumiya.yamanaka/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/fumiya.yamanaka/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Claude CLI alias
+alias claude='npx @anthropic-ai/claude-code@latest'
 
 echo "🎉  Completed to source .zshrc 🎉 "
 

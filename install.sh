@@ -74,18 +74,8 @@ mkdir -p "$HOME/.config/mise"
 ln -snfv "$DOTPATH/mise-config.toml" "$HOME/.config/mise/config.toml"
 echo "✅ Linked mise config"
 
-# Clean up old version managers from shell config
-echo "🧹 Cleaning up old version managers..."
-if [ -f "$HOME/.zshrc" ]; then
-    # Remove old version manager paths that might have been added manually
-    sed -i.bak '/\.pyenv/d' "$HOME/.zshrc"
-    sed -i.bak '/\.rbenv/d' "$HOME/.zshrc"
-    sed -i.bak '/\.nodebrew/d' "$HOME/.zshrc"
-    sed -i.bak '/\.nvm/d' "$HOME/.zshrc"
-    sed -i.bak '/goenv/d' "$HOME/.zshrc"
-    rm -f "$HOME/.zshrc.bak"
-    echo "✅ Cleaned .zshrc"
-fi
+# Note: Old version manager cleanup removed since .zshrc is now a symlink
+# Version managers should be removed from the dotfiles/.zshrc directly
 
 echo ""
 echo "🎉 Dotfiles installation complete!"
